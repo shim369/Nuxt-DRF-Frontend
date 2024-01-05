@@ -1,0 +1,82 @@
+<script setup>
+import { useUserStore } from '@/store/user';
+const config = useRuntimeConfig();
+const apiUrl = config.public.API_BASE_URL;
+
+const userStore = useUserStore()
+
+const emit = defineEmits(['deleteProject'])
+
+const props = defineProps({
+    admin: {
+        type: [Boolean]
+    },
+    project: {
+        type: [Object]
+    }
+})
+
+async function deleteProject(id) {
+    await $fetch(`${apiUrl}/api/v1/projects/` + id + '/delete/', {
+        method: 'DELETE',
+        headers: {
+            'Authorization': 'token ' + userStore.user.token,
+            'Content-Type': 'application/json'
+        },
+    })
+    .then(response => {
+        // console.log('response', response)
+
+        emit('deleteProject', id)
+    })
+    .catch(error => {
+        console.log('error', error)
+    })
+}
+</script>
+
+<template>
+    <li class="flex flex-col w-full p-5 bg-[#3a3a3a] md:flex-row" key="">
+        <img :src="project.image_url" alt="project.title" class="w-full md:w-1/4 h-auto max-h-[300px] object-cover"
+            width="300" height="200" />
+        <div class="w-full md:w-3/4 ml-0 mt-5 md:ml-5 md:mt-0">
+            <h2 class="h2-title">{{ project.title }}</h2>
+            <p class="mt-4 mb-6">{{ project.description }}</p>
+            <table class="w-full border-separate mb-3">
+                <tbody>
+                    <tr>
+                        <th class="bg-[#2b2a2a] p-4 w-[20%]">TECH</th>
+                        <td class="bg-[#2b2a2a] p-4 break-all">
+                            <ul class="flex">
+                                <li key="tech" class="mr-2">{{ project.skill_title }}
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="bg-[#2b2a2a] p-4">URL</th>
+                        <td class="bg-[#2b2a2a] p-4 break-all"><a href="" target="_blank" rel="noopener noreferrer"
+                                class="underline hover:no-underline">{{ project.demo_link }}</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="bg-[#2b2a2a] p-4">GitHub</th>
+                        <td class="bg-[#2b2a2a] p-4 break-all"><a href="" target="_blank" rel="noopener noreferrer"
+                                class="underline hover:no-underline">{{ project.github_repo }}
+                            </a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="space-x-4 flex justify-end">
+                <nuxt-link v-bind:to="'/projects/' + project.id"
+                    class="btn-red-rounded">Detail</nuxt-link>
+                <nuxt-link v-bind:to="'/edit/' + project.id"
+                    class="btn-red-rounded"
+                    v-if="admin">Edit</nuxt-link>
+                <a @click="deleteProject(project.id)"
+                    class="btn-red-rounded"
+                    v-if="admin">Delete</a>
+            </div>
+        </div>
+    </li>
+</template>
