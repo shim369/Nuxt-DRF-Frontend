@@ -1,4 +1,6 @@
-<script setup>
+<script setup lang="ts">
+import type { Portfolio, Skill } from '@/types/portfolio';
+
 const config = useRuntimeConfig();
 const apiUrl = config.public.API_BASE_URL;
 let queryRef = ref('')
@@ -8,24 +10,24 @@ function performSearch() {
     queryRef.value = query
 }
 
-let { data: projectsSkills } = await useFetch(`${apiUrl}/api/v1/projects/skills/`)
+let { data: projectsSkills } = await useFetch<Skill[]>(`${apiUrl}/api/v1/projects/skills/`)
 let selectedSkillsRef = ref('')
-let selectedSkills = []
+let selectedSkills = ref<number[]>([]);
 
-function toggleSkill(id) {
-    const index = selectedSkills.indexOf(id)
+function toggleSkill(id: number) {
+    const index = selectedSkills.value.indexOf(id)
 
     if (index === -1) {
-        selectedSkills.push(id)
+        selectedSkills.value.push(id)
     } else {
-        selectedSkills.splice(index, 1)
+        selectedSkills.value.splice(index, 1)
     }
 
-    selectedSkillsRef.value = selectedSkills.join(',')
+    selectedSkillsRef.value = selectedSkills.value.join(',')
 }
 
 
-let { data: projects } = await useFetch(`${apiUrl}/api/v1/projects/`, {
+let { data: projects } = await useFetch<Portfolio[]>(`${apiUrl}/api/v1/projects/`, {
     query: { query: queryRef, skills: selectedSkillsRef }
 })
 </script>
@@ -35,10 +37,9 @@ let { data: projects } = await useFetch(`${apiUrl}/api/v1/projects/`, {
     <div class="grid md:grid-cols-4 gap-6 py-10 px-6">
         <aside class="md:col-span-1 px-6 py-6">
             <div class="flex space-x-4 mb-10">
-                <input v-model="query" type="search" name="search" placeholder="Find project" class="w-full px-6 py-4 text-black outline-none">
-                <button
-                    class="btn-red-search"
-                    v-on:click="performSearch">
+                <input v-model="query" type="search" name="search" placeholder="Find project"
+                    class="w-full px-6 py-4 text-black outline-none">
+                <button class="btn-red-search" v-on:click="performSearch">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -49,14 +50,15 @@ let { data: projects } = await useFetch(`${apiUrl}/api/v1/projects/`, {
             <h2 class="h3-title">Skills</h2>
             <div class="mt-6 space-y-4">
                 <p v-for="skill in projectsSkills" v-bind:key="skill.id" v-on:click="toggleSkill(skill.id)"
-                    class="group flex py-4 px-6 text-white cursor-pointer hover:bg-gray-400 hover:text-black" v-bind:class="{ 'bg-gray-500': selectedSkillsRef.includes(skill.id) }">
+                    class="group flex py-4 px-6 text-white cursor-pointer hover:bg-gray-400 hover:text-black"
+                    v-bind:class="{ 'bg-gray-500': selectedSkills.includes(skill.id) }">
                     <span class="group-hover:ml-2 group-hover:mr-2 text-base mr-4 flex">&#9655;</span>{{ skill.title }}
                 </p>
             </div>
         </aside>
         <main class="md:col-span-3">
             <ul class="space-y-4">
-                <Project v-for="project in projects" v-bind:key="project.id" v-bind:project="project" />
+                <Project v-for="project in projects" v-bind:key="project.id" v-bind:project="project" :admin="true" />
             </ul>
         </main>
     </div>

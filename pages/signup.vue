@@ -1,11 +1,11 @@
-<script setup>
+<script setup lang="ts">
 const config = useRuntimeConfig();
 const apiUrl = config.public.API_BASE_URL;
 const router = useRouter()
 let email = ref('')
 let password1 = ref('')
 let password2 = ref('')
-let errors = ref([])
+let errors = ref<string[]>([])
 
 async function submitForm() {
     console.log('submitForm')

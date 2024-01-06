@@ -1,4 +1,5 @@
-<script setup>
+<script setup lang="ts">
+import type { Portfolio } from '@/types/portfolio';
 import { onMounted, watchEffect } from 'vue'
 import { useUserStore } from '@/store/user'
 import { useRouter } from 'vue-router'
@@ -22,15 +23,15 @@ function checkAuthentication() {
     }
 }
 
-let { data: projectsSkills } = await useFetch(`${apiUrl}/api/v1/projects/skills/`)
+let { data: projectsSkills } = await useFetch<Portfolio[]>(`${apiUrl}/api/v1/projects/skills/`)
 let skill = ref('')
 let title = ref('')
 let description = ref('')
 let image_url = ref('')
 let demo_link = ref('')
 let github_repo = ref('')
-let errors = ref([])
-let content = ref([])
+let content = ref('')
+let errors = ref<string[]>([])
 
 async function submitForm() {
     console.log('submitForm')

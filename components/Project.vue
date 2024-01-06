@@ -1,4 +1,5 @@
-<script setup>
+<script setup lang="ts">
+import type { Portfolio } from '@/types/portfolio';
 import { useUserStore } from '@/store/user';
 const config = useRuntimeConfig();
 const apiUrl = config.public.API_BASE_URL;
@@ -7,16 +8,12 @@ const userStore = useUserStore()
 
 const emit = defineEmits(['deleteProject'])
 
-const props = defineProps({
-    admin: {
-        type: [Boolean]
-    },
-    project: {
-        type: [Object]
-    }
-})
+const props = defineProps<{
+    admin: Boolean,
+    project: Portfolio
+}>();
 
-async function deleteProject(id) {
+async function deleteProject(id: string) {
     await $fetch(`${apiUrl}/api/v1/projects/` + id + '/delete/', {
         method: 'DELETE',
         headers: {

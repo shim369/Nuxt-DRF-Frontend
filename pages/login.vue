@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { useUserStore } from '@/store/user';
 const config = useRuntimeConfig();
 const apiUrl = config.public.API_BASE_URL;
@@ -7,14 +7,14 @@ const userStore = useUserStore()
 
 let email = ref('')
 let password = ref('')
-let errors = ref([])
+let errors = ref<string[]>([])
 
 async function submitForm() {
     console.log('submitForm')
 
     errors.value = []
 
-    await $fetch(`${apiUrl}/api/v1/token/login/`, {
+    await $fetch<{ auth_token: string }>(`${apiUrl}/api/v1/token/login/`, {
         method: 'POST',
         body: {
             username: email.value,

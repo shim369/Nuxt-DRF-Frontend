@@ -1,9 +1,11 @@
-<script setup>
+<script setup lang="ts">
+import type { Portfolio } from '@/types/portfolio';
+
 const config = useRuntimeConfig();
 const apiUrl = config.public.API_BASE_URL;
 
-const { data: projects } = await useFetch(`${apiUrl}/api/v1/projects/newest/`)
-let { data: projectsSkills } = await useFetch(`${apiUrl}/api/v1/projects/skills/`)
+const { data: projects } = await useFetch<Portfolio[]>(`${apiUrl}/api/v1/projects/newest/`)
+let { data: projectsSkills } = await useFetch<Portfolio[]>(`${apiUrl}/api/v1/projects/skills/`)
 
 // console.log(projects.value)
 
@@ -20,7 +22,7 @@ useSeoMeta({
     <div class="grid md:grid-cols-4 gap-6 py-10 px-6 text-white">
         <main class="md:col-span-3">
             <ul class="space-y-4">
-                <Project v-for="project in projects" v-bind:key="project.id" v-bind:project="project" />
+                <Project v-for="project in projects" :key="project.id" :project="project" :admin="true" />
             </ul>
         </main>
         <aside class="md:col-span-1">

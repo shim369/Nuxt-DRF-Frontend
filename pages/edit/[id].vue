@@ -1,4 +1,5 @@
-<script setup>
+<script setup lang="ts">
+import type { Portfolio } from '@/types/portfolio';
 import { onMounted, watchEffect } from 'vue'
 import { useUserStore } from '@/store/user'
 const config = useRuntimeConfig();
@@ -22,16 +23,15 @@ function checkAuthentication() {
     }
 }
 
-const { data: project } = await useFetch(`${apiUrl}/api/v1/projects/` + route.params.id + '/')
+const { data: project } = await useFetch<Portfolio>(`${apiUrl}/api/v1/projects/` + route.params.id + '/')
 
-let title = ref(project.value.title)
-let description = ref(project.value.description)
-let image_url = ref(project.value.image_url)
-let demo_link = ref(project.value.demo_link)
-let github_repo = ref(project.value.github_repo)
-let content = ref(project.value.content)
-let errors = ref([])
-
+let title = ref(project.value?.title ?? '')
+let description = ref(project.value?.description ?? '')
+let image_url = ref(project.value?.image_url ?? '')
+let demo_link = ref(project.value?.demo_link ?? '')
+let github_repo = ref(project.value?.github_repo ?? '')
+let content = ref(project.value?.content ?? '')
+let errors = ref<string[]>([])
 
 async function submitForm() {
     console.log('submitForm')
