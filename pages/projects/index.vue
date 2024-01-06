@@ -58,7 +58,7 @@ let { data: projects } = await useFetch<Portfolio[]>(`${apiUrl}/api/v1/projects/
         </aside>
         <main class="md:col-span-3">
             <ul class="space-y-4">
-                <Project v-for="project in projects" v-bind:key="project.id" v-bind:project="project" :admin="true" />
+                <Project v-for="project in projects" v-bind:key="project.id" v-bind:project="project" :admin="false" />
             </ul>
         </main>
     </div>
