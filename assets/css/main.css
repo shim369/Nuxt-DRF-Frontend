@@ -24,6 +24,9 @@
 	.h2-title {
 		@apply text-2xl mb-4 border-b-2 border-[#1a1a1a] pb-2;
 	}
+	.h3-title {
+		@apply text-xl mb-4 border-b-2 border-[#565656] pb-2;
+	}
 }
 
 @layer utilities {

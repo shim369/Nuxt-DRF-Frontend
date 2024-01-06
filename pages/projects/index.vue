@@ -34,8 +34,8 @@ let { data: projects } = await useFetch(`${apiUrl}/api/v1/projects/`, {
     <UnderTitle under_h1="Projects" />
     <div class="grid md:grid-cols-4 gap-6 py-10 px-6">
         <aside class="md:col-span-1 px-6 py-6">
-            <div class="flex space-x-4">
-                <input v-model="query" type="search" name="search" placeholder="Find project" class="w-full px-6 py-4 text-black">
+            <div class="flex space-x-4 mb-10">
+                <input v-model="query" type="search" name="search" placeholder="Find project" class="w-full px-6 py-4 text-black outline-none">
                 <button
                     class="btn-red-search"
                     v-on:click="performSearch">
@@ -46,12 +46,11 @@ let { data: projects } = await useFetch(`${apiUrl}/api/v1/projects/`, {
                     </svg>
                 </button>
             </div>
-            <hr class="my-6 opacity-30">
-            <h3 class="mt-6 text-xl text-white">Skills</h3>
+            <h2 class="h3-title">Skills</h2>
             <div class="mt-6 space-y-4">
                 <p v-for="skill in projectsSkills" v-bind:key="skill.id" v-on:click="toggleSkill(skill.id)"
-                    class="py-4 px-6 text-white cursor-pointer hover:bg-gray-400 hover:text-black" v-bind:class="{ 'bg-gray-500': selectedSkillsRef.includes(skill.id) }">
-                    {{ skill.title }}
+                    class="group flex py-4 px-6 text-white cursor-pointer hover:bg-gray-400 hover:text-black" v-bind:class="{ 'bg-gray-500': selectedSkillsRef.includes(skill.id) }">
+                    <span class="group-hover:ml-2 group-hover:mr-2 text-base mr-4 flex">&#9655;</span>{{ skill.title }}
                 </p>
             </div>
         </aside>
