@@ -5,8 +5,6 @@ const config = useRuntimeConfig();
 const apiUrl = config.public.API_BASE_URL;
 
 const { data: projects } = await useFetch<Portfolio[]>(`${apiUrl}/api/v1/projects/newest/`)
-let { data: projectsSkills } = await useFetch<Portfolio[]>(`${apiUrl}/api/v1/projects/skills/`)
-
 // console.log(projects.value)
 
 useSeoMeta({
@@ -28,20 +26,13 @@ useSeoMeta({
         <aside class="md:col-span-1">
             <div class="p-5 bg-[#3a3a3a]">
                 <h2 class="h2-title">Profile</h2>
-                <div class="mb-20">
+                <div class="mb-2">
                     <div class="py-8">
                         <img src="/pongki2.jpg" alt=""
                             class="rounded-full max-w-[150px] w-[100%] max-h-[150px] h-[100%] m-auto mb-6" />
                     </div>
-                    <p class="text-center">S-Ohtani</p>
+                    <p class="text-center mb-2">S-Ohtani</p>
                     <p class="text-center">Passionate developer</p>
-                </div>
-
-                <h2 class="h2-title">Skills</h2>
-                <div class="mb-4 flex flex-row break-all">
-                    <p v-for="skill in projectsSkills" v-bind:key="skill.id" class="mr-2 text-white">
-                        {{ skill.title }}
-                    </p>
                 </div>
             </div>
         </aside>
