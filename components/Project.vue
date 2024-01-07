@@ -21,14 +21,14 @@ async function deleteProject(id: string) {
             'Content-Type': 'application/json'
         },
     })
-    .then(response => {
-        // console.log('response', response)
+        .then(response => {
+            // console.log('response', response)
 
-        emit('deleteProject', id)
-    })
-    .catch(error => {
-        console.log('error', error)
-    })
+            emit('deleteProject', id)
+        })
+        .catch(error => {
+            console.log('error', error)
+        })
 }
 </script>
 
@@ -65,14 +65,9 @@ async function deleteProject(id: string) {
                 </tbody>
             </table>
             <div class="space-x-4 flex justify-end">
-                <nuxt-link v-bind:to="'/projects/' + project.id"
-                    class="btn-red-rounded">Detail</nuxt-link>
-                <nuxt-link v-bind:to="'/edit/' + project.id"
-                    class="btn-red-rounded"
-                    v-if="admin">Edit</nuxt-link>
-                <a @click="deleteProject(project.id)"
-                    class="btn-red-rounded"
-                    v-if="admin">Delete</a>
+                <nuxt-link v-bind:to="'/projects/' + project.id" class="btn-red-rounded">Detail</nuxt-link>
+                <nuxt-link v-bind:to="'/edit/' + project.id" class="btn-red-rounded" v-if="admin">Edit</nuxt-link>
+                <a @click="deleteProject(project.id)" class="btn-red-rounded" v-if="admin">Delete</a>
             </div>
         </div>
     </li>
