@@ -24,7 +24,7 @@ function logout() {
     <template v-else>
         <NuxtLink to="/login" class="btn-red-rounded">
             Log in</NuxtLink>
-        <NuxtLink to="/signup" class="btn-red-rounded">
-            Sign up</NuxtLink>
+        <!-- <NuxtLink to="/signup" class="btn-red-rounded">
+            Sign up</NuxtLink> -->
     </template>
 </template>
