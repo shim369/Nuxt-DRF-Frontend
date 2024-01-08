@@ -28,15 +28,21 @@ const props = defineProps<{
                     </tr>
                     <tr>
                         <th class="bg-[#2b2a2a] p-4">URL</th>
-                        <td class="bg-[#2b2a2a] p-4 break-all"><a href="" target="_blank" rel="noopener noreferrer"
-                                class="underline hover:no-underline">{{ project.demo_link }}</a>
+                        <td class="bg-[#2b2a2a] p-4 break-all">
+                            <a :href="project.demo_link" target="_blank" rel="noopener noreferrer"
+                                class="underline hover:no-underline">
+                                {{ project.demo_link }}
+                            </a>
                         </td>
                     </tr>
                     <tr>
                         <th class="bg-[#2b2a2a] p-4">GitHub</th>
-                        <td class="bg-[#2b2a2a] p-4 break-all"><a href="" target="_blank" rel="noopener noreferrer"
-                                class="underline hover:no-underline">{{ project.github_repo }}
-                            </a></td>
+                        <td class="bg-[#2b2a2a] p-4 break-all">
+                            <a :href="project.github_repo" target="_blank" rel="noopener noreferrer"
+                                class="underline hover:no-underline">
+                                {{ project.github_repo }}
+                            </a>
+                        </td>
                     </tr>
                 </tbody>
             </table>
