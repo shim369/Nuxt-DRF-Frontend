@@ -1,35 +1,11 @@
 <script setup lang="ts">
 import type { Portfolio } from '@/types/portfolio';
-import { useUserStore } from '@/store/user';
 const config = useRuntimeConfig();
 const apiUrl = config.public.API_BASE_URL;
 
-const userStore = useUserStore()
-
-const emit = defineEmits(['deleteProject'])
-
 const props = defineProps<{
-    admin: Boolean,
     project: Portfolio
 }>();
-
-async function deleteProject(id: string) {
-    await $fetch(`${apiUrl}/api/v1/projects/` + id + '/delete/', {
-        method: 'DELETE',
-        headers: {
-            'Authorization': 'token ' + userStore.user.token,
-            'Content-Type': 'application/json'
-        },
-    })
-        .then(response => {
-            // console.log('response', response)
-
-            emit('deleteProject', id)
-        })
-        .catch(error => {
-            console.log('error', error)
-        })
-}
 </script>
 
 <template>
@@ -66,8 +42,6 @@ async function deleteProject(id: string) {
             </table>
             <div class="space-x-4 flex justify-end">
                 <nuxt-link v-bind:to="'/projects/' + project.id" class="btn-red-rounded">Detail</nuxt-link>
-                <nuxt-link v-bind:to="'/edit/' + project.id" class="btn-red-rounded" v-if="admin">Edit</nuxt-link>
-                <a @click="deleteProject(project.id)" class="btn-red-rounded" v-if="admin">Delete</a>
             </div>
         </div>
     </li>
