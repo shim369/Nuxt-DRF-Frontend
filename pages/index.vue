@@ -8,14 +8,14 @@ const { data: projects } = await useFetch<Portfolio[]>(`${apiUrl}/api/v1/project
 // console.log(projects.value)
 
 useSeoMeta({
-    title: 'My portfolio site',
-    description: 'My portfolio site'
+    title: 'My Portfolio',
+    description: 'My Portfolio'
 })
 </script>
 <template>
     <div class="py-40 px-6 bg-[#1a1a1a] text-center">
         <h1 class="h1-title mb-2 text-4xl md:text-7xl">WEB DEVELOPMENT</h1>
-        <p class="lilita-one text-xl text-[#6b6b6b]">My Portfolio site</p>
+        <p class="lilita-one text-xl text-[#6b6b6b]">My Portfolio</p>
     </div>
     <div class="grid md:grid-cols-4 gap-6 py-10 px-6 text-white">
         <main class="md:col-span-3">

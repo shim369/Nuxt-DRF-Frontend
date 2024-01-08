@@ -30,6 +30,12 @@ function toggleSkill(id: number) {
 let { data: projects } = await useFetch<Portfolio[]>(`${apiUrl}/api/v1/projects/`, {
     query: { query: queryRef, skills: selectedSkillsRef }
 })
+
+
+useSeoMeta({
+    title: 'Projects | My Portfolio',
+    description: 'Projects page'
+})
 </script>
 
 <template>

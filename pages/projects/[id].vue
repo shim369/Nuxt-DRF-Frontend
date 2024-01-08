@@ -7,7 +7,7 @@ const route = useRoute()
 const { data: project } = await useFetch<Portfolio>(`${apiUrl}/api/v1/projects/` + route.params.id + '/')
 
 useSeoMeta({
-    title: project.value?.title,
+    title: project.value?.title + ' | My Portfolio',
     description: project.value?.description
 })
 </script>
