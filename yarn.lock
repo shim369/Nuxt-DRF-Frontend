@@ -4990,7 +4990,6 @@ __metadata:
     "@pinia/nuxt": ^0.5.1
     autoprefixer: ^10.4.16
     nuxt: ^3.9.0
-    pinia: ^2.1.7
     postcss: ^8.4.32
     tailwindcss: ^3.4.0
     vue: ^3.3.13
@@ -5345,7 +5344,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pinia@npm:>=2.1.7, pinia@npm:^2.1.7":
+"pinia@npm:>=2.1.7":
   version: 2.1.7
   resolution: "pinia@npm:2.1.7"
   dependencies:
