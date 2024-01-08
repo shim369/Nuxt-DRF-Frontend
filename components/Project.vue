@@ -10,7 +10,7 @@ const props = defineProps<{
 
 <template>
     <li class="flex flex-col items-start w-full p-5 bg-[#3a3a3a] md:flex-row" key="">
-        <img :src="project.image_url" alt="project.title" class="w-full md:w-1/4 h-auto max-h-[300px] object-cover"
+        <img :src="project.image_url" alt="project.title" class="w-full md:w-1/4 h-auto max-h-[300px]"
             width="300" height="200" />
         <div class="w-full md:w-3/4 ml-0 mt-5 md:ml-5 md:mt-0">
             <h2 class="h2-title">{{ project.title }}</h2>
