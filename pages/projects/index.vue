@@ -76,7 +76,7 @@ useSeoMeta({
                     </svg>
                 </button>
             </div>
-            <h2 class="h3-title">Skills</h2>
+            <h3 class="h3-title">Skills</h3>
             <div class="mt-6 space-y-4">
                 <p v-for="skill in projectsSkills" v-bind:key="skill.id" v-on:click="toggleSkill(skill.id)"
                     class="group flex py-4 px-6 text-white cursor-pointer hover:bg-gray-400 hover:text-black"
