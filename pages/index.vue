@@ -29,7 +29,7 @@ useSeoMeta({
     <div class="grid md:grid-cols-4 gap-6 py-10 px-6 text-white">
         <main class="md:col-span-3">
             <ul class="space-y-4">
-                <Project v-for="project in projects" :key="project.id" :project="project" :admin="false" />
+                <Project v-for="project in projects" :key="project.id" :project="project" />
             </ul>
         </main>
         <aside class="md:col-span-1">
