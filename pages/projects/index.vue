@@ -1,36 +1,59 @@
 <script setup lang="ts">
+import { ref, watch } from 'vue';
+import axios from 'axios';
 import type { Portfolio, Skill } from '@/types/portfolio';
 
 const config = useRuntimeConfig();
 const apiUrl = config.public.API_BASE_URL;
-let queryRef = ref('')
-let query = ''
 
-function performSearch() {
-    queryRef.value = query
-}
+const query = ref('');
+const projectsSkills = ref<Skill[]>([]);
+const selectedSkills = ref<number[]>([]);
+const projects = ref<Portfolio[]>([]);
 
-let { data: projectsSkills } = await useFetch<Skill[]>(`${apiUrl}/api/v1/projects/skills/`)
-let selectedSkillsRef = ref('')
-let selectedSkills = ref<number[]>([]);
-
-function toggleSkill(id: number) {
-    const index = selectedSkills.value.indexOf(id)
-
-    if (index === -1) {
-        selectedSkills.value.push(id)
-    } else {
-        selectedSkills.value.splice(index, 1)
+// スキルデータを取得する関数
+async function fetchSkills() {
+    try {
+        const response = await axios.get<Skill[]>(`${apiUrl}/api/v1/projects/skills/`);
+        projectsSkills.value = response.data;
+    } catch (error) {
+        console.error('Error fetching skills:', error);
     }
-
-    selectedSkillsRef.value = selectedSkills.value.join(',')
 }
 
+// プロジェクトデータを取得する関数
+async function fetchProjects() {
+    try {
+        const response = await axios.get<Portfolio[]>(`${apiUrl}/api/v1/projects/`, {
+            params: { query: query.value, skills: selectedSkills.value.join(',') }
+        });
+        projects.value = response.data;
+    } catch (error) {
+        console.error('Error fetching projects:', error);
+    }
+}
 
-let { data: projects } = await useFetch<Portfolio[]>(`${apiUrl}/api/v1/projects/`, {
-    query: { query: queryRef, skills: selectedSkillsRef }
-})
+// 検索関数
+function performSearch() {
+    fetchProjects();
+}
 
+// スキルの選択をトグルする関数
+function toggleSkill(id: number) {
+    const index = selectedSkills.value.indexOf(id);
+    if (index === -1) {
+        selectedSkills.value.push(id);
+    } else {
+        selectedSkills.value.splice(index, 1);
+    }
+}
+
+// クエリまたは選択されたスキルが変更されたときにプロジェクトデータを再取得
+watch([query, selectedSkills], fetchProjects);
+
+// 初期データの取得
+fetchSkills();
+fetchProjects();
 
 useSeoMeta({
     title: 'Projects | My Portfolio',

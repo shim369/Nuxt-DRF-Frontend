@@ -9,9 +9,8 @@ const props = defineProps<{
 </script>
 
 <template>
-    <li class="flex flex-col items-start w-full p-5 bg-[#3a3a3a] md:flex-row" key="">
-        <img :src="project.image_url" alt="project.title" class="w-full md:w-1/4 h-auto max-h-[300px] object-contain"
-            width="300" height="200" />
+    <li class="flex flex-col items-start w-full p-5 bg-[#3a3a3a] md:flex-row" :key="project.id">
+        <img :src="`${apiUrl}${project.small_image}`" alt="project.title" class="w-full md:w-1/4 h-auto max-h-[300px] object-contain" width="300" />
         <div class="w-full md:w-3/4 ml-0 mt-5 md:ml-5 md:mt-0">
             <h2 class="h2-title">{{ project.title }}</h2>
             <p class="mt-4 mb-6">{{ project.description }}</p>
