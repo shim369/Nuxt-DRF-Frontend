@@ -23,7 +23,8 @@ useSeoMeta({
 
 <template>
     <div class="py-40 px-6 bg-[#1a1a1a] text-center">
-        <h1 class="h1-title text-4xl md:text-7xl">WEB DEVELOPMENT</h1>
+        <h1 class="h1-title mb-2 text-4xl md:text-7xl">WEB DEVELOPMENT</h1>
+        <p class="lilita-one text-xl text-[#bdbdbd]">My Portfolio</p>
     </div>
     <div class="grid md:grid-cols-4 gap-6 py-10 px-6 text-white">
         <main class="md:col-span-3">
