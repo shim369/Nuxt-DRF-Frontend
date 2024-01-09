@@ -7,7 +7,8 @@ export interface Portfolio {
     id: string;
     title: string;
     description: string;
-    image_url: string;
+    small_image: string;
+    big_image: string;
     demo_link: string;
     github_repo: string;
     content: string;
