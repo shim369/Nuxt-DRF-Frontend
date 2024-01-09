@@ -1,17 +1,26 @@
 <script setup lang="ts">
+import axios from 'axios';
+import type { AxiosResponse } from 'axios';
 import type { Portfolio } from '@/types/portfolio';
+import { ref } from 'vue';
 
 const config = useRuntimeConfig();
 const apiUrl = config.public.API_BASE_URL;
 
-const { data: projects } = await useFetch<Portfolio[]>(`${apiUrl}/api/v1/projects/newest/`)
-// console.log(projects.value)
+const projects = ref<Portfolio[]>([]);
+
+axios.get<Portfolio[]>(`${apiUrl}/api/v1/projects/newest/`)
+    .then((response: AxiosResponse<Portfolio[]>) => {
+        projects.value = response.data;
+    })
+    .catch((error: any) => console.error('Error fetching projects:', error));
 
 useSeoMeta({
     title: 'My Portfolio',
     description: 'My Portfolio'
-})
+});
 </script>
+
 <template>
     <div class="py-40 px-6 bg-[#1a1a1a] text-center">
         <h1 class="h1-title mb-2 text-4xl md:text-7xl">WEB DEVELOPMENT</h1>
