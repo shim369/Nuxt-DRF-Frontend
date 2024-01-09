@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { Portfolio } from '@/types/portfolio';
-import { defineProps } from 'vue';
 const config = useRuntimeConfig();
 const apiUrl = config.public.API_BASE_URL;
 
