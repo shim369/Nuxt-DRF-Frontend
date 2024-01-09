@@ -10,7 +10,7 @@ const toggleNav = () => {
 
 <template>
     <header class="w-full bg-[#0f0f0f] p-6 flex items-center justify-between">
-        <NuxtLink to="/" class="lilita-one text-xl text-[#E01A00] md:text-3xl">My Portfolio</NuxtLink>
+        <NuxtLink to="/" class="lilita-one text-xl text-[#ff1e00] md:text-3xl">My Portfolio</NuxtLink>
 
         <nav class="pc-nav flex items-center space-x-4">
             <NavLinks />
