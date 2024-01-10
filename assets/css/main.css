@@ -16,7 +16,7 @@
 		@apply cursor-pointer transition ease-in-out delay-100 text-white bg-[#E01A00] py-2 px-4 border-2 border-[#E01A00] hover:bg-transparent hover:text-[#E01A00] hover:border-2 hover:border-[#E01A00] rounded-full;
 	}
 	.btn-gray-rounded {
-		@apply cursor-pointer transition ease-in-out delay-100 bg-[#2b2a2a] py-1 px-4 inline-block hover:bg-transparent border-2 border-[#2b2a2a] hover:text-[#2b2a2a] hover:border-2 hover:border-[#2b2a2a] rounded-full;
+		@apply cursor-pointer transition ease-in-out delay-100 bg-[#2b2a2a] py-1 px-4 inline-block hover:bg-transparent border-2 border-[#2b2a2a] hover:text-[#ccc] hover:border-2 hover:border-[#2b2a2a] rounded-full;
 	}
 	.h1-title {
 		@apply text-transparent lilita-one text-stroke font-bold;
