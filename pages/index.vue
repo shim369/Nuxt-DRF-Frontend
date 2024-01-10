@@ -2,18 +2,22 @@
 import axios from 'axios';
 import type { AxiosResponse } from 'axios';
 import type { Portfolio } from '@/types/portfolio';
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 
 const config = useRuntimeConfig();
 const apiUrl = config.public.API_BASE_URL;
-
 const projects = ref<Portfolio[]>([]);
 
-axios.get<Portfolio[]>(`${apiUrl}/api/v1/projects/newest/`)
-    .then((response: AxiosResponse<Portfolio[]>) => {
+const fetchProjects = async () => {
+    try {
+        const response: AxiosResponse<Portfolio[]> = await axios.get(`${apiUrl}/api/v1/projects/newest/`);
         projects.value = response.data;
-    })
-    .catch((error: any) => console.error('Error fetching projects:', error));
+    } catch (error) {
+        console.error('Error fetching projects:', error);
+    }
+};
+
+onMounted(fetchProjects);
 
 useSeoMeta({
     title: 'My Portfolio',
