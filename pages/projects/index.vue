@@ -79,9 +79,9 @@ useSeoMeta({
             <h3 class="h3-title">Skills</h3>
             <div class="mt-6 space-y-4">
                 <p v-for="skill in projectsSkills" v-bind:key="skill.id" v-on:click="toggleSkill(skill.id)"
-                    class="group flex py-4 px-6 text-white cursor-pointer hover:bg-gray-400 hover:text-black"
+                    class="group flex items-center py-4 px-6 text-white cursor-pointer transition-all duration-400 hover:bg-gray-400 hover:text-black"
                     v-bind:class="{ 'bg-gray-500': selectedSkills.includes(skill.id) }">
-                    <span class="group-hover:ml-2 group-hover:mr-2 text-base mr-4 flex">&#9655;</span>{{ skill.title }}
+                    <span class="group-hover:ml-1 group-hover:mr-1 text-sm mr-2 flex transition-all duration-400">&#9655;</span>{{ skill.title }}
                 </p>
             </div>
         </aside>
