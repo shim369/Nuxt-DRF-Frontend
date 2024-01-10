@@ -31,5 +31,11 @@ export default defineNuxtConfig({
       tailwindcss: {},
       autoprefixer: {},
     },
+  },
+  modules: [
+    '@nuxt/image',
+  ],
+  image: {
+    format: ['webp']
   }
 })
