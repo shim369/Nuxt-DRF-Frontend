@@ -41,7 +41,7 @@ useSeoMeta({
                 <h2 class="h2-title">Profile</h2>
                 <div class="mb-2">
                     <div class="py-8">
-                        <nuxt-img format="webp" src="/pongki.webp" alt="pongki"
+                        <NuxtImg format="webp" src="/pongki.webp" alt="pongki"
                             class="rounded-full max-w-[150px] w-[100%] max-h-[150px] h-[100%] m-auto mb-6" width="150" height="150" />
                     </div>
                     <p class="text-center mb-2">S-Ohtani</p>
