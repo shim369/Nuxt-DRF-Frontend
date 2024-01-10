@@ -1078,6 +1078,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@nuxtjs/google-fonts@npm:^3.1.3":
+  version: 3.1.3
+  resolution: "@nuxtjs/google-fonts@npm:3.1.3"
+  dependencies:
+    "@nuxt/kit": ^3.8.2
+    google-fonts-helper: ^3.4.1
+    pathe: ^1.1.1
+  checksum: bfd0367bfc546c6e4f127fee12cacde793f90cce7676936881ee9b0dba2c28d20d813d22db1fa9810ea203ef41045ffff3ed9967767bb421a33dc363439f65f5
+  languageName: node
+  linkType: hard
+
 "@parcel/watcher-android-arm64@npm:2.3.0":
   version: 2.3.0
   resolution: "@parcel/watcher-android-arm64@npm:2.3.0"
@@ -2851,7 +2862,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"deepmerge@npm:^4.2.2":
+"deepmerge@npm:^4.2.2, deepmerge@npm:^4.3.1":
   version: 4.3.1
   resolution: "deepmerge@npm:4.3.1"
   checksum: 2024c6a980a1b7128084170c4cf56b0fd58a63f2da1660dcfe977415f27b17dbe5888668b59d0b063753f3220719d5e400b7f113609489c90160bb9a5518d052
@@ -3719,6 +3730,18 @@ __metadata:
     slash: ^5.1.0
     unicorn-magic: ^0.1.0
   checksum: f331b42993e420c8f2b61a6ca062276977ea6d95f181640ff018f00200f4fe5b50f1fae7540903483e6570ca626fe16234ab88e848d43381a2529220548a9d39
+  languageName: node
+  linkType: hard
+
+"google-fonts-helper@npm:^3.4.1":
+  version: 3.4.1
+  resolution: "google-fonts-helper@npm:3.4.1"
+  dependencies:
+    deepmerge: ^4.3.1
+    hookable: ^5.5.3
+    ofetch: ^1.3.3
+    ufo: ^1.3.2
+  checksum: ba28b7835ee0d3982d9195e0d8ca9a724cbca2ec689f1fc8937f188ec2b2ba1060fcc1d448534a08e99977b01c6fed9f0d9b45071318a6e5d240655ab983aa81
   languageName: node
   linkType: hard
 
@@ -5272,6 +5295,7 @@ __metadata:
   resolution: "nuxt-app@workspace:."
   dependencies:
     "@nuxt/image": ^1.1.0
+    "@nuxtjs/google-fonts": ^3.1.3
     autoprefixer: ^10.4.16
     axios: ^1.6.5
     nuxt: ^3.9.0

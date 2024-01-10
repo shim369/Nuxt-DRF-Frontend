@@ -11,17 +11,6 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: 'ja'
       },
-      link: [
-        {
-          rel: "preconnect",
-          href: "https://fonts.googleapis.com",
-        },
-        {
-          rel: "stylesheet",
-          href: "https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Lilita+One&display=swap",
-          crossorigin: "",
-        },
-      ],
     },
   },
   devtools: { enabled: true },
@@ -32,8 +21,15 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  googleFonts: {
+    families: {
+      Lato: [300],
+      'Lilita+One': true,
+    }
+  },
   modules: [
     '@nuxt/image',
+    '@nuxtjs/google-fonts',
   ],
   image: {
     format: ['webp']
