@@ -13,7 +13,8 @@ const props = defineProps<{
         <h2 class="h2-title">{{ props.project.title }}</h2>
         <div class="flex flex-col items-start w-full md:flex-row">
             <NuxtImg format="webp" :src="`${apiUrl}${props.project.small_image}`" :alt="props.project.title"
-                class="w-full md:w-1/4 h-auto max-h-[300px] object-contain mt-10 md:mt-0" width="300" height="300" />
+                class="w-full md:w-1/4 h-auto max-h-[300px] object-contain mt-10 md:mt-0" width="300" height="300"
+                sizes="(max-width: 768px) 100vw, 300px" />
             <div class="w-full md:w-3/4 ml-0 mt-10 md:ml-5 md:mt-0">
                 <p class="mt-5 mb-5 ml-[2px] md:mt-0">{{ props.project.description }}</p>
                 <table class="w-full border-separate mb-3">
