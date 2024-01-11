@@ -44,8 +44,8 @@ onMounted(async () => {
                 </div>
             </div>
         </div>
-        <div v-else class="flex justify-center items-center h-screen">
-            Loading...
+        <div v-else class="flex justify-center" aria-label="読み込み中">
+            <div class="animate-spin h-10 w-10 border-4 border-[#E01A00] rounded-full border-t-transparent"></div>
         </div>
     </div>
 </template>

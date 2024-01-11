@@ -9,7 +9,7 @@ const props = defineProps<{
 </script>
 
 <template>
-    <li class="p-5 bg-[#3a3a3a] md:p-10" :key="props.project.id">
+    <li v-if="project" class="p-5 bg-[#3a3a3a] md:p-10" :key="props.project.id">
         <h2 class="h2-title">{{ props.project.title }}</h2>
         <div class="flex flex-col items-start w-full md:flex-row">
             <NuxtImg format="webp" :src="`${apiUrl}${props.project.small_image}`" :alt="props.project.title"
@@ -52,5 +52,8 @@ const props = defineProps<{
                 </div>
             </div>
         </div>
+    </li>
+    <li v-else class="flex justify-center" aria-label="読み込み中">
+        <div class="animate-spin h-10 w-10 border-4 border-[#E01A00] rounded-full border-t-transparent"></div>
     </li>
 </template>
