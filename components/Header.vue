@@ -9,7 +9,7 @@ const toggleNav = () => {
 </script>
 
 <template>
-    <header class="w-full bg-[#0f0f0f] p-6 flex items-center justify-between">
+    <header class="w-full bg-[#0f0f0f] flex items-center justify-between p-5 md:px-10 md:py-5">
         <NuxtLink to="/" class="lilita-one text-xl text-[#ff1e00] md:text-3xl">My Portfolio</NuxtLink>
 
         <nav class="pc-nav flex items-center space-x-4">

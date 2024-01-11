@@ -63,8 +63,8 @@ useSeoMeta({
 
 <template>
     <UnderTitle under_h1="Projects" />
-    <div class="grid md:grid-cols-4 gap-6 py-10 px-6">
-        <aside class="md:col-span-1 px-6 py-6">
+    <div class="grid md:grid-cols-4 gap-6 p-5 md:p-10">
+        <aside class="md:col-span-1 p-5 md:p-10">
             <div class="flex space-x-4 mb-10">
                 <input v-model="query" type="search" name="search" placeholder="Find project"
                     class="w-full px-6 py-4 text-black outline-none">

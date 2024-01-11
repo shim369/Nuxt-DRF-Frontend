@@ -28,20 +28,19 @@ onMounted(async () => {
 
 <template>
     <UnderTitle under_h1="Project Detail" />
-    <div class="py-10 px-6">
-        <div v-if="project"
-            class="py-5 px-5 m-auto bg-[#3a3a3a] border-b-8 border-[#e82c2c] md:py-10 md:px-10 md:w-full">
+    <div class="p-5 md:p-10">
+        <div v-if="project" class="p-5 m-auto bg-[#3a3a3a] border-b-8 border-[#e82c2c] md:p-10 md:w-full">
             <h2 class="h2-title">{{ project.title }}</h2>
-            <div class="flex flex-col items-start mt-10 md:flex-row">
+            <div class="flex flex-col items-start md:flex-row">
                 <NuxtImg format="webp" :src="`${apiUrl}${project.big_image}`" class="w-full md:w-1/4 h-auto object-cover"
                     :alt="project.title" width="800" height="400" />
-                <div class="w-full mx-auto ml-0 md:w-3/4 md:ml-20">
-                    <div class="text-base mt-10 md:mt-0">{{ project.content }}</div>
-                    <div class="mt-10">
+                <div class="w-full mx-auto ml-0 md:w-3/4 md:ml-10">
+                    <div class="p-5 bg-[#2b2a2a] text-base mt-5 break-all md:mt-0 md:p-10">{{ project.content }}</div>
+                    <div class="mt-5 flex">
                         <a :href="project.demo_link" target="_blank" rel="noopener noreferrer"
-                            class="btn-gray-rounded mr-2">URL</a>
+                            class="btn-red-rounded mr-4">URL</a>
                         <a :href="project.github_repo" target="_blank" rel="noopener noreferrer"
-                            class="btn-gray-rounded">GitHub</a>
+                            class="btn-red-rounded">GitHub</a>
                     </div>
                 </div>
             </div>
