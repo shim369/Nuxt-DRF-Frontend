@@ -27,7 +27,7 @@ onMounted(async () => {
 
 <template>
     <UnderTitle under_h1="Project Detail" />
-    <div class="p-5 md:p-10">
+    <div class=" px-5 py-10 md:p-10">
         <div v-if="project" class="p-5 m-auto bg-[#3a3a3a] border-b-8 border-[#e82c2c] md:p-10 md:w-full">
             <h2 class="h2-title">{{ project.title }}</h2>
             <div class="flex flex-col items-start md:flex-row">

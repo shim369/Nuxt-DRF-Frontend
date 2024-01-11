@@ -28,7 +28,7 @@ useSeoMeta({
         <h1 class="h1-title mb-2 text-4xl md:text-7xl">WEB DEVELOPMENT</h1>
         <p class="lilita-one text-xl text-[#bdbdbd]">My Portfolio</p>
     </div>
-    <div class="grid md:grid-cols-4 gap-10 p-5 md:p-10 text-white">
+    <div class="grid md:grid-cols-4 gap-5 px-5 py-10 md:gap-10 md:p-10 text-white">
         <aside class="md:col-span-1">
             <div class="p-5 bg-[#3a3a3a] md:p-10">
                 <h2 class="h2-title">Profile</h2>
