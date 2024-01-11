@@ -22,7 +22,7 @@
 		@apply text-2xl mb-5 border-b-2 border-[#666] pb-2 md:mb-10;
 	}
 	.h3-title {
-		@apply text-xl mb-5 border-b-2 border-[#565656] pb-2 md:mb-10;
+		@apply text-xl mb-5 border-b-2 border-[#565656] pb-2;
 	}
 }
 
