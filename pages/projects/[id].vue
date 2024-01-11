@@ -40,7 +40,7 @@ onMounted(async () => {
                         <p class="mb-10">{{ project.frontend }}</p>
                         <h3 class="h3-title">Backend</h3>
                         <p class="mb-10">{{ project.backend }}</p>
-                        <h3 class="h3-title">Explanation</h3>
+                        <h3 class="h3-title">Detail</h3>
                         <p>{{ project.content }}</p>
                     </div>
                     <div class="mt-5 space-x-4 flex justify-end">
