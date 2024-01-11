@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import axios from 'axios';
 import type { Portfolio } from '@/types/portfolio';
-import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 
 const config = useRuntimeConfig();
