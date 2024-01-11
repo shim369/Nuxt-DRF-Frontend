@@ -8,7 +8,7 @@ const projects = ref<Portfolio[]>([]);
 
 const fetchProjects = async () => {
     try {
-        const response= await axios.get<Portfolio[]>(`${apiUrl}/api/v1/projects/newest/`);
+        const response = await axios.get<Portfolio[]>(`${apiUrl}/api/v1/projects/newest/`);
         projects.value = response.data;
     } catch (error) {
         console.error('Error fetching projects:', error);
@@ -29,11 +29,6 @@ useSeoMeta({
         <p class="lilita-one text-xl text-[#bdbdbd]">My Portfolio</p>
     </div>
     <div class="grid md:grid-cols-4 gap-10 p-5 md:p-10 text-white">
-        <main class="md:col-span-3">
-            <ul class="space-y-4">
-                <Project v-for="project in projects" :key="project.id" :project="project" />
-            </ul>
-        </main>
         <aside class="md:col-span-1">
             <div class="p-5 bg-[#3a3a3a] md:p-10">
                 <h2 class="h2-title">Profile</h2>
@@ -48,5 +43,10 @@ useSeoMeta({
                 </div>
             </div>
         </aside>
+        <main class="md:col-span-3">
+            <ul class="space-y-4">
+                <Project v-for="project in projects" :key="project.id" :project="project" />
+            </ul>
+        </main>
     </div>
 </template>
