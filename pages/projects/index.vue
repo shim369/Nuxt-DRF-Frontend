@@ -1,59 +1,45 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue';
 import axios from 'axios';
 import type { Portfolio, Skill } from '@/types/portfolio';
 
 const config = useRuntimeConfig();
 const apiUrl = config.public.API_BASE_URL;
+let queryRef = ref('')
+let query = ''
 
-const query = ref('');
-const projectsSkills = ref<Skill[]>([]);
-const selectedSkills = ref<number[]>([]);
-const projects = ref<Portfolio[]>([]);
-
-// スキルデータを取得する関数
-async function fetchSkills() {
-    try {
-        const response = await axios.get<Skill[]>(`${apiUrl}/api/v1/projects/skills/`);
-        projectsSkills.value = response.data;
-    } catch (error) {
-        console.error('Error fetching skills:', error);
-    }
-}
-
-// プロジェクトデータを取得する関数
-async function fetchProjects() {
-    try {
-        const response = await axios.get<Portfolio[]>(`${apiUrl}/api/v1/projects/`, {
-            params: { query: query.value, skills: selectedSkills.value.join(',') }
-        });
-        projects.value = response.data;
-    } catch (error) {
-        console.error('Error fetching projects:', error);
-    }
-}
-
-// 検索関数
 function performSearch() {
-    fetchProjects();
+    queryRef.value = query
 }
 
-// スキルの選択をトグルする関数
+let projectsSkills = ref<Skill[]>([]);
+let selectedSkillsRef = ref('')
+let selectedSkills = ref<number[]>([]);
+
+axios.get(`${apiUrl}/api/v1/projects/skills/`).then(response => {
+    projectsSkills.value = response.data;
+});
+
 function toggleSkill(id: number) {
-    const index = selectedSkills.value.indexOf(id);
+    const index = selectedSkills.value.indexOf(id)
+
     if (index === -1) {
-        selectedSkills.value.push(id);
+        selectedSkills.value.push(id)
     } else {
-        selectedSkills.value.splice(index, 1);
+        selectedSkills.value.splice(index, 1)
     }
+
+    selectedSkillsRef.value = selectedSkills.value.join(',')
 }
 
-// クエリまたは選択されたスキルが変更されたときにプロジェクトデータを再取得
-watch([query, selectedSkills], fetchProjects);
+let projects = ref<Portfolio[]>([]);
 
-// 初期データの取得
-fetchSkills();
-fetchProjects();
+watchEffect(() => {
+    axios.get(`${apiUrl}/api/v1/projects/`, {
+        params: { query: queryRef.value, skills: selectedSkillsRef.value }
+    }).then(response => {
+        projects.value = response.data;
+    });
+});
 
 useSeoMeta({
     title: 'Projects | My Portfolio',
