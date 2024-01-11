@@ -11,6 +11,8 @@ export interface Portfolio {
     big_image: string;
     demo_link: string;
     github_repo: string;
+    backend: string;
+    frontend: string;
     content: string;
     skill_title: string;
     created_at: Date;

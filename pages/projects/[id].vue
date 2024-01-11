@@ -34,7 +34,15 @@ onMounted(async () => {
                 <NuxtImg format="webp" :src="`${apiUrl}${project.big_image}`" class="w-full md:w-1/4 h-auto object-cover"
                     :alt="project.title" width="800" height="400" />
                 <div class="w-full mx-auto ml-0 md:w-3/4 md:ml-10">
-                    <div class="p-5 bg-[#2b2a2a] text-base mt-5 break-all md:mt-0 md:p-10">{{ project.content }}</div>
+                    <div class="p-5 bg-[#2b2a2a] text-base mt-5 break-all md:mt-0 md:p-10">
+                        
+                        <h3 class="h3-title">Frontend</h3>
+                        <p class="mb-10">{{ project.frontend }}</p>
+                        <h3 class="h3-title">Backend</h3>
+                        <p class="mb-10">{{ project.backend }}</p>
+                        <h3 class="h3-title">Explanation</h3>
+                        <p>{{ project.content }}</p>
+                    </div>
                     <div class="mt-5 flex">
                         <a :href="project.demo_link" target="_blank" rel="noopener noreferrer"
                             class="btn-red-rounded mr-4">URL</a>
