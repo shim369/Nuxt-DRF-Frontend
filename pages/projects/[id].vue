@@ -43,9 +43,9 @@ onMounted(async () => {
                         <h3 class="h3-title">Explanation</h3>
                         <p>{{ project.content }}</p>
                     </div>
-                    <div class="mt-5 flex">
+                    <div class="mt-5 space-x-4 flex justify-end">
                         <a :href="project.demo_link" target="_blank" rel="noopener noreferrer"
-                            class="btn-red-rounded mr-4">URL</a>
+                            class="btn-red-rounded">URL</a>
                         <a :href="project.github_repo" target="_blank" rel="noopener noreferrer"
                             class="btn-red-rounded">GitHub</a>
                     </div>
