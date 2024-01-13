@@ -15,9 +15,14 @@ let projectsSkills = ref<Skill[]>([]);
 let selectedSkillsRef = ref('')
 let selectedSkills = ref<number[]>([]);
 
-axios.get(`${apiUrl}/api/v1/projects/skills/`).then(response => {
-    projectsSkills.value = response.data;
-});
+const fetchProjectsSkills = async () => {
+    try {
+        const response = await axios.get<Skill[]>(`${apiUrl}/api/v1/projects/skills/`)
+        projectsSkills.value = response.data;
+    } catch (error) {
+        console.error('Error fetching projects:', error);
+    }
+};
 
 function toggleSkill(id: number) {
     const index = selectedSkills.value.indexOf(id)
@@ -33,13 +38,18 @@ function toggleSkill(id: number) {
 
 let projects = ref<Portfolio[]>([]);
 
-watchEffect(() => {
-    axios.get(`${apiUrl}/api/v1/projects/`, {
-        params: { query: queryRef.value, skills: selectedSkillsRef.value }
-    }).then(response => {
+watchEffect(async () => {
+    try {
+        const response = await axios.get<Portfolio[]>(`${apiUrl}/api/v1/projects/`, {
+            params: { query: queryRef.value, skills: selectedSkillsRef.value }
+        });
         projects.value = response.data;
-    });
+    } catch (error) {
+        console.error('Error fetching projects:', error);
+    }
 });
+
+onMounted(fetchProjectsSkills);
 
 useSeoMeta({
     title: 'Projects | My Portfolio',
