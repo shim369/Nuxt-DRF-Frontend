@@ -64,7 +64,7 @@ useSeoMeta({
             <div class="flex space-x-4 mb-10">
                 <input v-model="query" type="search" name="search" placeholder="Find project"
                     class="w-full px-6 py-4 text-black outline-none">
-                <button class="btn-red-search" v-on:click="performSearch">
+                <button class="btn-red-search" v-on:click="performSearch" aria-label="検索ボタン">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -72,7 +72,7 @@ useSeoMeta({
                     </svg>
                 </button>
             </div>
-            <h3 class="h3-title">Skills</h3>
+            <h2 class="h2-title">Skills</h2>
             <div class="mt-6 space-y-4">
                 <p v-for="skill in projectsSkills" v-bind:key="skill.id" v-on:click="toggleSkill(skill.id)"
                     class="group flex items-center py-4 px-6 text-white cursor-pointer transition-all duration-400 hover:bg-gray-400 hover:text-black"
