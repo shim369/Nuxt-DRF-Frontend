@@ -38,7 +38,7 @@ useSeoMeta({
                             class="rounded-full max-w-[150px] w-[100%] max-h-[150px] h-[100%] m-auto mb-6" width="150"
                             height="150" sizes="(max-width: 640px) 100px, 150px" />
                     </div>
-                    <p class="text-center mb-2">S-Ohtani</p>
+                    <p class="text-center mb-2">Shim</p>
                     <p class="text-center">Passionate developer</p>
                 </div>
             </div>
