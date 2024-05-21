@@ -185,6 +185,6 @@
   }
 
   .project-content p {
-    color: #fff;
+    color: #fff !important;
   }
 }
