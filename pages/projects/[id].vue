@@ -35,13 +35,13 @@ onMounted(async () => {
                     :alt="project.title" width="800" height="400" />
                 <div class="w-full mx-auto ml-0 md:w-3/4 md:ml-10">
                     <div class="p-5 bg-[#2b2a2a] text-base mt-5 break-all md:mt-0 md:p-10">
-                        
+
                         <h3 class="h3-title">Frontend</h3>
                         <p class="mb-10">{{ project.frontend }}</p>
                         <h3 class="h3-title">Backend</h3>
                         <p class="mb-10">{{ project.backend }}</p>
                         <h3 class="h3-title">Detail</h3>
-                        <div v-html="project.content"></div>
+                        <div class="project-content" v-html="project.content"></div>
                     </div>
                     <div class="mt-5 space-x-4 flex justify-end">
                         <a :href="project.demo_link" target="_blank" rel="noopener noreferrer"
