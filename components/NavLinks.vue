@@ -1,4 +1,4 @@
 <template>
-    <NuxtLink to="/" class="lilita-one text-white">Home</NuxtLink>
-    <NuxtLink to="/projects" class="lilita-one text-white">Projects</NuxtLink>
+    <NuxtLink to="/" class="lato text-white">Home</NuxtLink>
+    <NuxtLink to="/projects" class="lato text-white">Projects</NuxtLink>
 </template>
