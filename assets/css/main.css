@@ -186,5 +186,7 @@
 
   .project-content * {
     color: #fff !important;
+    line-height: 1.5rem !important;
+    font-family: "Lato", sans-serif !important;
   }
 }
