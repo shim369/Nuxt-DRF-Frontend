@@ -184,7 +184,7 @@
     transform: scale(50);
   }
 
-  .project-content p {
+  .project-content * {
     color: #fff !important;
   }
 }
