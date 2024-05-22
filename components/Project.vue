@@ -16,7 +16,6 @@ const props = defineProps<{
                 class="w-full md:w-1/4 h-auto max-h-[300px] object-contain mt-10 md:mt-0" width="300" height="300"
                 sizes="(max-width: 768px) 100vw, 300px" />
             <div class="w-full md:w-3/4 ml-0 mt-10 md:ml-5 md:mt-0">
-                <p class="mt-5 mb-5 ml-[2px] md:mt-0">{{ props.project.description }}</p>
                 <table class="w-full border-separate mb-3">
                     <tbody>
                         <tr>
@@ -48,6 +47,7 @@ const props = defineProps<{
                         </tr>
                     </tbody>
                 </table>
+                <!-- <p class="mt-5 mb-5 ml-[2px] md:mt-0">{{ props.project.description }}</p> -->
                 <div class="space-x-4 flex justify-end">
                     <NuxtLink v-bind:to="'/projects/' + props.project.id" class="btn-red-rounded">Detail</NuxtLink>
                 </div>
